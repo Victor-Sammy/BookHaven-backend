@@ -6,6 +6,7 @@ const passport = require('passport')
 const session = require('express-session')
 const errorHandler = require('./middleware/errorHandler')
 const connectDb = require('./config/dbConnection')
+const MongoDBStore = require('connect-mongodb-session')(session)
 const dotenv = require('dotenv')
 const bookRoutes = require('./routes/BooksRoutes')
 const librayRoutes = require('./routes/myLibraryRoutes')
@@ -18,8 +19,8 @@ const Library = require('./models/libraryModel')
 const History = require('./models/historyModel')
 const importedFile = require('./passport')
 //const pdfModel = require('./models/pdfModel')
-const fs = require('fs')
-const asyncHandler = require('express-async-handler')
+//const fs = require('fs')
+//const asyncHandler = require('express-async-handler')
 
 connectDb()
 dotenv.config()
@@ -27,6 +28,14 @@ dotenv.config()
 const origin = 'http://localhost:5173'
 
 const app = express()
+
+// configure the session store
+const store = new MongoDBStore({
+  uri: process.env.CONNECTION_STRING,
+  collection: 'sessions', // Name of the MongoDB collection to store sessions
+  expires: 1000 * 60 * 60 * 24 * 7, // Session expiration (e.g., 7 days)
+})
+
 app.use(cors())
 
 app.use(cors({ origin, credentials: true }))
@@ -35,6 +44,7 @@ app.use(
     secret: `${process.env.ACCESS_TOKEN_SECRET}`,
     resave: true,
     saveUninitialized: true,
+    store: store,
   })
 )
 
@@ -58,48 +68,58 @@ app.listen(port, () => {
   console.log(`server is running on port ${port}`)
 })
 
-// POST NEW PDF DATA TO MONGODB
-// POST NEW PDF DATA TO MONGODB
-const pdfBuffer = fs.readFileSync(
-  './assets/life-sc/Yield, chemical composition, and efficiency of utilization of applied nitrogen from BRS Kurumi pastures.pdf'
-  // currently on uploading this
-)
-
-// storage
-const Storage = multer.diskStorage({
-  destination: 'uploads',
-  filename: (req, file, cb) => {
-    cb(null, file.originalname)
-  },
+app.get('/set-session', (req, res) => {
+  req.session.username = req.user
+  res.send('Session data set.')
 })
 
-const upload = multer({
-  storage: Storage,
-}).single('testPdf')
-
-app.post('/upload', (req, res) => {
-  upload(req, res, (err) => {
-    if (err) {
-      console.log(err)
-    } else {
-      const newPdf = new Books({
-        title: req.body.title,
-        author: req.body.author,
-        description: req.body.description,
-        year: req.body.year,
-        resourceType: req.body.resourceType,
-        subject: req.body.subject,
-        pdf: pdfBuffer,
-      })
-      newPdf
-        .save()
-        .then(() => res.send(newPdf))
-        .catch((err) => console.log(err))
-    }
-  })
+app.get('/get-session', (req, res) => {
+  const username = req.session.username || 'Guest'
+  res.send(`Hello, ${username}!`)
 })
 
-app.use('/uploads', express.static('uploads'))
+// POST NEW PDF DATA TO MONGODB
+// POST NEW PDF DATA TO MONGODB
+// const pdfBuffer = fs.readFileSync(
+//   './assets/life-sc/Yield, chemical composition, and efficiency of utilization of applied nitrogen from BRS Kurumi pastures.pdf'
+//   // currently on uploading this
+// )
+
+// // storage
+// const Storage = multer.diskStorage({
+//   destination: 'uploads',
+//   filename: (req, file, cb) => {
+//     cb(null, file.originalname)
+//   },
+// })
+
+// const upload = multer({
+//   storage: Storage,
+// }).single('testPdf')
+
+// app.post('/upload', (req, res) => {
+//   upload(req, res, (err) => {
+//     if (err) {
+//       console.log(err)
+//     } else {
+//       const newPdf = new Books({
+//         title: req.body.title,
+//         author: req.body.author,
+//         description: req.body.description,
+//         year: req.body.year,
+//         resourceType: req.body.resourceType,
+//         subject: req.body.subject,
+//         pdf: pdfBuffer,
+//       })
+//       newPdf
+//         .save()
+//         .then(() => res.send(newPdf))
+//         .catch((err) => console.log(err))
+//     }
+//   })
+// })
+
+// app.use('/uploads', express.static('uploads'))
 
 // GET SINGLE PDF OBJECT
 // GET SINGLE PDF OBJECT
