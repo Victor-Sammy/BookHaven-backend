@@ -42,8 +42,8 @@ app.use(cors({ origin, credentials: true }))
 app.use(
   session({
     secret: `${process.env.ACCESS_TOKEN_SECRET}`,
-    resave: true,
-    saveUninitialized: true,
+    resave: false,
+    saveUninitialized: false,
     store: store,
   })
 )
@@ -68,15 +68,15 @@ app.listen(port, () => {
   console.log(`server is running on port ${port}`)
 })
 
-app.get('/set-session', (req, res) => {
-  req.session.username = req.user
-  res.send('Session data set.')
-})
+// app.get('/set-session', (req, res) => {
+//   req.session.username = req.user
+//   res.send('Session data set.')
+// })
 
-app.get('/get-session', (req, res) => {
-  const username = req.session.username || 'Guest'
-  res.send(`Hello, ${username}!`)
-})
+// app.get('/get-session', (req, res) => {
+//   const username = req.session.username || 'Guest'
+//   res.send(`Hello, ${username}!`)
+// })
 
 // POST NEW PDF DATA TO MONGODB
 // POST NEW PDF DATA TO MONGODB
