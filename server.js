@@ -45,6 +45,10 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: store,
+    cookie: {
+      sameSite: 'none',
+      secure: true,
+    },
   })
 )
 

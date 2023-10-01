@@ -10,7 +10,7 @@ passport.use(
     {
       clientID: `${process.env.CLIENT_ID}`,
       clientSecret: `${process.env.CLIENT_SECRET}`,
-      callbackURL: process.env.GOOGLE_CALLBACK_URL,
+      callbackURL: `${process.env.GOOGLE_CALLBACK_URL}`,
       scope: ['profile', 'email'],
     },
     async (_accessToken, _refreshToken, profile, done) => {
