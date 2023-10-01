@@ -19,5 +19,12 @@
         "src": "/auth/(.*)",
         "dest": "/routes/googleRoute.js"
       }
+    ],
+    "redirects": [
+      {
+        "source": "/auth/google/callback",
+        "destination": "https://book-haven-backend-ten.vercel.app/auth/google/callback",
+        "statusCode": 307
+      }
     ]
-  }
+}

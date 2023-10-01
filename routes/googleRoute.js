@@ -5,25 +5,17 @@ const clientURL = 'http://localhost:5173'
 
 const router = express.Router()
 
-router.get('/login/success', isAuthenticated, (req, res) => {
-  // if (req.session) {
-  //   res.status(200).json({ user: req.user })
-  // } else {
-  //   res.status(401).json({ message: 'Not Authorized' })
-  // }
-  res.status(200).json({ user: req.user })
+router.get('/login/success', (req, res) => {
+  if (req.user) {
+    res.status(200).json({ user: req.user })
+  } else {
+    res.status(401).json({ message: 'Not Authorized' })
+  }
 })
 
 router.get('/login/failed', (req, res) => {
   res.status(401).json({ message: 'Log in failure!' })
 })
-
-function isAuthenticated(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next()
-  }
-  res.redirect('/login/failed') // Redirect to the login page if not authenticated
-}
 
 router.get('/google', passport.authenticate('google', ['profile', 'email']))
 
