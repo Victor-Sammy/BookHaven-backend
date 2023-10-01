@@ -18,6 +18,10 @@
       {
         "src": "/auth/(.*)",
         "dest": "/routes/googleRoute.js"
+      },
+      {
+        "src": "/auth/google/callback",
+        "dest": "/passport.js"
       }
     ]
   }
