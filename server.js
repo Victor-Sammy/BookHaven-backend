@@ -25,7 +25,7 @@ const importedFile = require('./passport')
 connectDb()
 dotenv.config()
 
-const origin = 'http://localhost:5173'
+const origin = 'https://bookhavenlibrary.netlify.app'
 
 const app = express()
 
