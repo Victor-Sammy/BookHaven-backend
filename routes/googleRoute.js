@@ -1,7 +1,7 @@
 const express = require('express')
 const passport = require('passport')
 
-const clientURL = 'http://localhost:5173'
+const clientURL = 'https://bookhavenlibrary.netlify.app'
 
 const router = express.Router()
 
