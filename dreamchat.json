@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "dreamchat-401809",
+  "private_key_id": "047ceabeaa7493e24e47cf94d47b8bf323533c82",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC4/7GSoLX2BpxP\nseK3+z3LPTuRj0fNjYqQiMTWlv+z6iivee94bkXBXO5DjAVl9lh0oVX8INohEfxr\nX+dGNEtzitr+GXR/yRJq9288kUDTMtJO+vGnpI34kn512M2qtS4FR7kUlKbFPQ3Q\n7OK/5rCnws8gXoTXb4AYjid65XOJJ6pcnq8TiFwpL9cl/RglS49OyJtmxQTH8T9c\nUIgGsxun7aIv1AjWXNM4PZVO8KVfBDxZ2AXeZqSYfEmHYdy7BPKZgrwNHO3xM4b/\nEy1mt4lIDhScRQ+q3bw7qVNBLbPN8/nKjlFqZ5s1osUYtkVK+glh+ST4Gjh3jpUZ\nTAvzDb6RAgMBAAECggEAG08vnPgZdGScbY1SbRtrD1YONZojnN3wnw55lD39KEeA\nUwsahTouFPHNgG4qm9cmTq1EXrBQ0wHvM8CYCP6ORtOwKUODtZtumxjEtHmyypqd\nfihARSGfDZs+jNIA5lrRnNjuIvIgvkwZfoaBoJeC63jwD5S0YoMksztE67j0ecH/\nWa6PY6UObSrfglHoBpMXFJhzcipzCmazYNe6z++Te5ec+q0+YQbXWg//LL/PDmoi\nA8zpqgRl2r96WHvoEWJ5FJRKLOnsGpFPw/kT1S9l0jt9BetuyjC82XEN4qZC2HKp\n9E8G9QHTt9QgUyCibU4Wz+V3a0QpDAmftQpiZWcz+wKBgQDoaupiWk9BPFPrnJaV\nR+cYosfDUK9Z6ZUOcUjLhn2qek3BuB/hwojhLHYjYTvQo7AfSGzCZpeawv0ofS8h\nh1F3lAOZhNx0P7slJN6pTGDlrld6O9iwj7LIdlP0W9iUYHWJxFJmQVCU76PDn8pZ\nfH3HQvmfxK9qy72VXq8YZIJfnwKBgQDLxREBSkWvhqu3Usy8PyaUZXGAhc6dBSH+\nyTW1ccpQzGBrswmOGPE9y0icEy0QKG/SBog2kelD1VQ7mEMmLWb39QqGv8PeWjP7\n8TsLO98+1RIxLp/R6yPHuKJ1Axj9U6d37HzY/nCknSMpPKuUOKJwWXGc+F3eZxeD\nCfR17JJzzwKBgQCMnApbIGnsfLQEykJr5AlS5UBX0NuVWPSdvTmeMCqc1ctvFJbt\nPYUUPZLniq7mZfFqq6Vo4yp7LdZ9BWdbMIPABWM8IJ5DEj+FlE3FPPkuW5B+2fAZ\nuYYfMz9Nibd45PaXN5fmV0OKJ4T7GBQSmXd68vEUkKjTwpla4eKqrjwV3wKBgAU1\nPTEGP++zhnICCL+K8aZ7TUJWqSg0OGE1rUy84snb318BTW43TvsgVfO/Pbia//ij\nOBoE8qxMKIH5a0XvhSEzPxigkBX/wjJfQP4Rgqwtb/CX23fXBawWGPjaomnfGHml\nLq+xGRnr9jkYlt4L8ILkllXHt0Z25g/wUjItYLTbAoGBAIsyjyEyjHt02v1dflxP\n1NQxvYxy6IE4zGW8mr9HkaKFLg4ZzO6/6I87LBgTY6GOAT7chu6UowxA/0rnQeYs\niWerOlmSSzG0l93kROtCmoNVEXlr9VUmLHfef/l92uYP05iw0xRq1lxgH/eV41Xg\nFrV3va05AbEV+6lr6GN2go4b\n-----END PRIVATE KEY-----\n",
+  "client_email": "dreamchat@dreamchat-401809.iam.gserviceaccount.com",
+  "client_id": "108720399070368987150",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/dreamchat%40dreamchat-401809.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

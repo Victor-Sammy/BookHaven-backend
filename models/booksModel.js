@@ -24,7 +24,7 @@ const bookSchema = mongoose.Schema(
       type: Number,
     },
     resourceType: {
-      type: [String],
+      type: String,
     },
     subject: {
       type: [String],

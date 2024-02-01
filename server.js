@@ -19,7 +19,7 @@ const Library = require('./models/libraryModel')
 const History = require('./models/historyModel')
 const importedFile = require('./passport')
 //const pdfModel = require('./models/pdfModel')
-//const fs = require('fs')
+const fs = require('fs')
 //const asyncHandler = require('express-async-handler')
 
 connectDb()
@@ -87,46 +87,47 @@ app.listen(port, () => {
 
 // POST NEW PDF DATA TO MONGODB
 // POST NEW PDF DATA TO MONGODB
-// const pdfBuffer = fs.readFileSync(
-//   './assets/life-sc/Yield, chemical composition, and efficiency of utilization of applied nitrogen from BRS Kurumi pastures.pdf'
-//   // currently on uploading this
-// )
+const pdfBuffer = fs.readFileSync(
+  './assets/computer-science/Computational Intelligence and Mathematics for Tackling Complex Problems 4.pdf'
+  // currently on uploading this
+)
 
-// // storage
-// const Storage = multer.diskStorage({
-//   destination: 'uploads',
-//   filename: (req, file, cb) => {
-//     cb(null, file.originalname)
-//   },
-// })
+// storage
+const Storage = multer.diskStorage({
+  destination: 'uploads',
+  filename: (req, file, cb) => {
+    cb(null, file.originalname)
+  },
+})
 
-// const upload = multer({
-//   storage: Storage,
-// }).single('testPdf')
+const upload = multer({
+  storage: Storage,
+}).single('testPdf')
 
-// app.post('/upload', (req, res) => {
-//   upload(req, res, (err) => {
-//     if (err) {
-//       console.log(err)
-//     } else {
-//       const newPdf = new Books({
-//         title: req.body.title,
-//         author: req.body.author,
-//         description: req.body.description,
-//         year: req.body.year,
-//         resourceType: req.body.resourceType,
-//         subject: req.body.subject,
-//         pdf: pdfBuffer,
-//       })
-//       newPdf
-//         .save()
-//         .then(() => res.send(newPdf))
-//         .catch((err) => console.log(err))
-//     }
-//   })
-// })
+app.post('/upload', (req, res) => {
+  upload(req, res, (err) => {
+    if (err) {
+      console.log(err)
+    } else {
+      const newPdf = new Books({
+        title: req.body.title,
+        author: req.body.author,
+        description: req.body.description,
+        year: req.body.year,
+        resourceType: req.body.resourceType,
+        subject: req.body.subject,
+        pdf: pdfBuffer,
+        modelName: req.body.modelName,
+      })
+      newPdf
+        .save()
+        .then(() => res.send(newPdf))
+        .catch((err) => console.log(err))
+    }
+  })
+})
 
-// app.use('/uploads', express.static('uploads'))
+app.use('/uploads', express.static('uploads'))
 
 // GET SINGLE PDF OBJECT
 // GET SINGLE PDF OBJECT

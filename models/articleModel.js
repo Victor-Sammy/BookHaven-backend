@@ -29,7 +29,7 @@ const articleSchema = mongoose.Schema(
       required: [true, 'Please add the year'],
     },
     resourceType: {
-      type: [String],
+      type: String,
       required: [true, 'Please add the type'],
     },
     subject: {
